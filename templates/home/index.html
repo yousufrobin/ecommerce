@@ -1,0 +1,122 @@
+{% extends "base/base.html" %}
+
+{% block start %}
+
+<div class="container">
+
+
+
+    <div class="card">
+        <div class="card-body d-flex">
+            <div class="form-inline d-inline-flex mr-auto">
+                <labe>Category
+                    <select class="ml-2 form-control" onchange="location = this.value;">
+                        <option>Please Select</option>
+                        {% for category in categories %}
+
+                        <option value="/category/?category={{category.slug}}" {% if category_slug == category.category_name %} selected {% endif %}>{{category.category_name}}</option>
+
+                        {% endfor %}
+                    </select>
+                </labe>
+            </div>
+            <div class="btn-group" role="group" aria-label="Filter by">
+                <button type="button" class="btn btn-outline-primary active">Featured</button>
+                <button type="button" class="btn btn-outline-primary">New Items</button>
+                <button type="button" class="btn btn-outline-primary">On Sale</button>
+            </div>
+        </div>
+    </div>
+
+
+    <div class=" mt-5 pt-5">
+        <div class="row">
+
+            <div class="col-md-3">
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Product type</h5>
+                        <ul class="list-menu">
+                            <li><a href="#">People <span class="badge badge-pill badge-light float-right">120</span>
+                                </a></li>
+                            <li><a href="#">Watches <span class="badge badge-pill badge-light float-right">42</span>
+                                </a></li>
+                            <li><a href="#">Cinema <span class="badge badge-pill badge-light float-right">16</span> </a>
+                            </li>
+                            <li><a href="#">Clothes <span class="badge badge-pill badge-light float-right">87</span>
+                                </a></li>
+                            <li><a href="#">Home items <span
+                                        class="badge badge-pill badge-light float-right">34</span></a></li>
+                            <li><a href="#">Animals <span class="badge badge-pill badge-light float-right">7</span></a>
+                            </li>
+                            <li><a href="#">People <span class="badge badge-pill badge-light float-right">12</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Rating</h5>
+
+                        <label class="custom-control custom-checkbox">
+                            <input type="checkbox" checked="" class="custom-control-input">
+                            <div class="custom-control-label text-warning">
+                                <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                            </div>
+                        </label>
+
+                        <label class="custom-control custom-checkbox">
+                            <input type="checkbox" checked="" class="custom-control-input">
+                            <div class="custom-control-label text-warning">
+                                <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                        </label>
+
+                        <label class="custom-control custom-checkbox">
+                            <input type="checkbox" checked="" class="custom-control-input">
+                            <div class="custom-control-label text-warning">
+                                <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                            </div>
+                        </label>
+
+                        <label class="custom-control custom-checkbox">
+                            <input type="checkbox" checked="" class="custom-control-input">
+                            <div class="custom-control-label text-warning">
+                                <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+
+                            </div>
+                        </label>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-9">
+                <div class="row">
+
+                    {% for product in products %}
+                    <div class="col-md-3">
+                        <figure class="card card-product-grid">
+                            <a href="{{product.product_images.first.image.url}}">
+                                <div class="img-wrap"> <img src="{{product.product_images.first.image.url}}"> </div>
+                            </a>
+                            <figcaption class="info-wrap border-top">
+                                <a href="/products/{{product.slug}}" class="title">{{product.product_name}}</a>
+                                <div class="price mt-2">${{product.price}}.00</div> <!-- price-wrap.// -->
+                            </figcaption>
+                        </figure> <!-- card // -->
+                    </div> <!-- col.// -->
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+</div>
+
+{% endblock %}

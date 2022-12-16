@@ -1,0 +1,24 @@
+{% extends 'base/base.html' %}
+
+{% block start %}
+
+<div class="container mt-5 pt-5">
+    <div class="row">
+        {% for product in products %}
+        <div class="col-md-3">
+            <figure class="card card-product-grid">
+                <a href="{{product.product_images.first.image.url}}">
+                    <div class="img-wrap"> <img src="{{product.product_images.first.image.url}}"> </div>
+                </a>
+                <figcaption class="info-wrap border-top">
+                    <a href="products/{{product.slug}}" class="title">{{product.product_name}}</a>
+                    <div class="price mt-2">${{product.price}}.00</div> <!-- price-wrap.// -->
+                </figcaption>
+            </figure> <!-- card // -->
+        </div> <!-- col.// -->
+        {% endfor %}
+    </div>
+
+</div>
+
+{% endblock %}
