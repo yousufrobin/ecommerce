@@ -1,0 +1,6 @@
+1) user registration and verification through email
+2) user login
+3) cart
+4) coupon
+5) price change in accordance with size variations
+6) selecting product according to product category
